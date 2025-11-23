@@ -5,64 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BASURAYT ♻️</title>
 
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="stylesheet.css">
-
-  <!-- Manifest (PWA) -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#27ae60">
 
-  <!-- iOS PWA -->
+  <!-- iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="BASURAYT">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
-
-  <!-- Logo Animation -->
-  <style>
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-20px); }
-      60% { transform: translateY(-10px); }
-    }
-    .logo {
-      animation: bounce 2.5s infinite;
-    }
-  </style>
 </head>
-
 <body>
-  <div class="app">
+
+<div class="app">
+
+    <!-- Logo -->
     <img src="https://i.postimg.cc/1RJZFqPd/11.jpg" alt="BASURAYT" class="logo">
 
-    <!-- LOGIN SECTION -->
-    <div id="login-section" class="login-box">
-      <input type="text" id="username" placeholder="Enter your username">
-      <input type="password" id="password" placeholder="Enter your password">
-      <button id="login-btn">Login</button>
+    <!-- CAMERA CONTAINER -->
+    <div class="camera-box">
+        <video id="camera" autoplay playsinline></video>
     </div>
 
-    <!-- CAMERA SECTION -->
-    <div id="camera-section" class="camera-box" style="display:none;">
-      <video id="camera" autoplay playsinline></video>
-
-      <button id="capture">📸 Scan Object</button>
-      <button id="reset">🔁 Reset Points</button>
-
-      <p id="result">Scanned result appears here...</p>
-      <p id="tip">Tip appears here...</p>
+    <!-- BUTTONS -->
+    <div class="button-group">
+        <button id="capture" class="main-btn">📷 Scan Object</button>
+        <button id="reset" class="main-btn reset">🔁 Reset Points</button>
+        <button id="activate-premium" class="premium-btn">🔓 Activate Premium</button>
     </div>
-  </div>
 
-  <!-- JAVASCRIPT -->
-  <script src="javascript.js"></script>
+    <p id="result"></p>
+    <p id="tip"></p>
 
-  <!-- SERVICE WORKER -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js")
-        .then(() => console.log("Service Worker Registered"))
-        .catch(err => console.log("SW registration failed", err));
-    }
-  </script>
+</div>
+
+<!-- SIDEBAR BUTTONS (FIXED) -->
+<div class="sidebar-buttons">
+    <button id="toggle-scoreboard">📊</button>
+    <button id="toggle-howto">📘</button>
+    <button id="toggle-wastetrack">🚮</button>
+    <button id="toggle-premium">💎</button>
+</div>
+
+<!-- Sidebars remain unchanged -->
+<script src="javascript.js"></script>
 </body>
 </html>
